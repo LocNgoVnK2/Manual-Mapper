@@ -56,6 +56,7 @@ public class UserEntity
 ### 2. Implement ICurrentUserBusiness
 
 ```csharp
+// In a real project, these Business would retrieve data from an authentication framework or user context.
 public class FakeCurrentUserBusiness : ICurrentUserBusiness
 {
     public string GetCurrentUserId()
@@ -69,7 +70,6 @@ public class FakeCurrentUserBusiness : ICurrentUserBusiness
 
 ```csharp
 // NOTE: In a real application, ICurrentUserBusiness should be injected via Dependency Injection (DI).
-// In a real project, these Business would retrieve data from an authentication framework or user context.
 ICurrentUserBusiness currentUser = new FakeCurrentUserBusiness();
 
 
