@@ -68,20 +68,43 @@ public class FakeCurrentUserBusiness : ICurrentUserBusiness
 ### 3. Convert DTO ↔ Entity
 
 ```csharp
-var currentUser = new FakeCurrentUserBusiness();
+// NOTE: In a real application, ICurrentUserBusiness should be injected via Dependency Injection (DI).
+// In a real project, these Business would retrieve data from an authentication framework or user context.
+ICurrentUserBusiness currentUser = new FakeCurrentUserBusiness();
+
+
 var converter = new GenericEntityConverter<UserDTO, UserEntity>(currentUser);
 
-// Custom property mapping
-var mappings = new Dictionary<string, string>
+// Custom mapping: DTO.FullName => Entity.FullUserName
+var customMappings = new Dictionary<string, string>
+            {
+                { "FullName", "FullUserName" }
+            };
+
+
+var userDto = new UserDTO
 {
-    { "FullName", "FullUserName" } // DTO → Entity
+    FullName = "John Doe",
+    Age = 30
 };
 
-var userDto = new UserDTO { FullName = "John Doe", Age = 30 };
-var entity = converter.ToEntity(userDto, null, mappings);
+var userEntity = converter.ToEntity(userDto, null, customMappings);
+
 
 // Convert back to DTO using same mapping
-var dto = converter.ToDTO(entity, mappings);
+
+var entity = new UserEntity
+{
+    FullUserName = "Loc",
+    Age = 25,
+    CreatedBy = Guid.NewGuid(),
+    CreatedDate = DateTime.UtcNow.AddDays(-1),
+    ModifiedBy = Guid.NewGuid(),
+    ModifiedDate = DateTime.UtcNow
+};
+
+
+var dto = converter.ToDTO(entity, customMappings);
 ```
 
 ---
