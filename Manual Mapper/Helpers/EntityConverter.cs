@@ -1,16 +1,7 @@
-﻿using Manual_Mapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Manual_Mapper.Interfaces;
 
 namespace Manual_Mapper.Helper
 {
-    public interface IEntityConverter<TDTO, TEntity> where TEntity : class
-    {
-        TEntity ToEntity(TDTO dto, TEntity entity = null, Dictionary<string, string> customMappings = null);
-        TDTO ToDTO(TEntity entity, Dictionary<string, string> customMappings = null);
-    }
-
     public class GenericEntityConverter<TDTO, TEntity> : IEntityConverter<TDTO, TEntity>
         where TEntity : class, new()
         where TDTO : class, new()

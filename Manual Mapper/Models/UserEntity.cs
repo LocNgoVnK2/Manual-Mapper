@@ -4,14 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manual_Mapper
+namespace Manual_Mapper.Models
 {
-    public class UserDTO
-    {
-        public string FullName { get; set; }
-        public int Age { get; set; }
-    }
-
     public class UserEntity
     {
         public string FullUserName { get; set; }
