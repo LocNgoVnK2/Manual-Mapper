@@ -119,13 +119,13 @@ Manual-Mapper/
 │
 ├── Interfaces/
 │   └── IEntityConverter.cs         // Interface for the converter
+│   └── ICurrentUserBusiness.cs     // Interface for current user context
 │
 ├── Models/
 │   ├── UserDTO.cs
 │   └── UserEntity.cs
 │
 ├── Services/
-│   └── ICurrentUserBusiness.cs     // Interface for current user context
 │   └── FakeCurrentUserBusiness.cs // Fake implementation for testing
 │
 ├── Program.cs                      // Demo usage
