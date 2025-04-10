@@ -24,7 +24,7 @@ Supports custom property mappings and automatic handling of audit fields like `C
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Manual-Mapper.git
+git clone https://github.com/LocNgoVnK2/Manual-Mapper.git
 ```
 
 Then include the relevant files in your .NET project.
